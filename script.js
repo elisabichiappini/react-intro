@@ -8,11 +8,17 @@ const total = document.querySelector('.total');
 let count = 0;
 const numberListArray = [];
 
+const removeNumber = (index) => {
+    numberListArray.splice(index, 1);
+    count --;
+    updateDOM();
+}
+
 const updateDOM = () => {
     total.innerText = String(count);
     numberList.innerHTML = '';
-    numberListArray.forEach(number => {
-        numberList.innerHTML += `<div class="number">${number}</div>`;
+    numberListArray.forEach((number, i) => {
+        numberList.innerHTML += `<div class="number" onclick="removeNumber(${i})">${number}</div>`;
     });
 }
 
